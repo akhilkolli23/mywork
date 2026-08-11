@@ -1,31 +1,583 @@
+<!DOCTYPE html>
 <html>
 <head>
-<title>ECOM APPICATION</title>
+    <title>ECOM APPLICATION</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+        }
+
+        /* TOP HEADER */
+        .top-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 60px 10px 60px;
+            background-color: white;
+        }
+
+        /* FLIPKART BUTTON */
+        .flipkart-btn {
+            background-color: #ffe500;
+            width: 175px;
+            height: 58px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: bold;
+            margin-right: 20px;
+        }
+
+        .flipkart-btn span {
+            color: #2874f0;
+            font-size: 32px;
+            margin-right: 12px;
+        }
+
+        /* TRAVEL BUTTON */
+        .travel-btn {
+            background-color: #eeeeee;
+            width: 175px;
+            height: 58px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .travel-btn span {
+            color: #ff5b36;
+            font-size: 28px;
+            margin-right: 12px;
+        }
+
+        .left-buttons {
+            display: flex;
+            align-items: center;
+        }
+
+        /* LOCATION */
+        .location {
+            font-size: 17px;
+            font-weight: bold;
+        }
+
+        .location a {
+            color: #2874f0;
+            text-decoration: none;
+            margin-left: 5px;
+        }
+
+        /* SEARCH + LOGIN AREA */
+        .search-row {
+            display: flex;
+            align-items: center;
+            padding: 10px 75px 15px 75px;
+            gap: 20px;
+        }
+
+        .search-box {
+            height: 58px;
+            border: 2px solid #2874f0;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            flex: 1;
+            padding-left: 20px;
+        }
+
+        .search-icon {
+            font-size: 28px;
+            color: #555;
+            margin-right: 15px;
+        }
+
+        .search-box input {
+            border: none;
+            outline: none;
+            width: 100%;
+            font-size: 20px;
+        }
+
+        .login,
+        .more,
+        .cart {
+            font-size: 18px;
+            white-space: nowrap;
+            cursor: pointer;
+        }
+
+        .login {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .more {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .cart {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* LINE */
+        .line {
+            border: none;
+            border-top: 1px solid #ddd;
+            margin: 0 55px;
+        }
+
+        /* CATEGORY SECTION */
+        .categories {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 15px 70px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .category {
+            text-align: center;
+            font-size: 17px;
+            min-width: 75px;
+        }
+
+        .category-icon {
+            font-size: 32px;
+            margin-bottom: 7px;
+        }
+
+        .category:first-child {
+            color: #111;
+            font-weight: bold;
+            border-bottom: 4px solid #2874f0;
+            padding-bottom: 10px;
+        }
+
+        /* BANNER SECTION */
+        .banners {
+            display: flex;
+            gap: 40px;
+            padding: 25px 75px;
+        }
+
+        .banner {
+            height: 300px;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .banner1 {
+            flex: 1.15;
+            background: linear-gradient(120deg, #ffe4cf, #d9f5d0);
+        }
+
+        .banner2 {
+            flex: 1.15;
+            background: linear-gradient(120deg, #ffffff, #fff3df);
+        }
+
+        .banner3 {
+            flex: 0.48;
+            background: linear-gradient(120deg, #8ba4c8, #d9e4f5);
+        }
+
+        .banner-content {
+            padding: 35px;
+        }
+
+        .sale {
+            display: inline-block;
+            background-color: #2874f0;
+            color: white;
+            padding: 8px 12px;
+            font-size: 17px;
+            font-weight: bold;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+
+        .banner h1 {
+            font-size: 28px;
+            margin: 10px 0;
+        }
+
+        .banner p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .product-image {
+            position: absolute;
+            right: 15px;
+            bottom: 10px;
+            width: 55%;
+            height: 70%;
+            object-fit: contain;
+        }
+
+        .banner3 .banner-content {
+            padding: 30px 25px;
+        }
+
+        .banner3 h1 {
+            font-size: 23px;
+        }
+
+        /* SPOTLIGHT SECTION */
+        .spotlight {
+            margin: 10px 75px;
+            background: linear-gradient(90deg, #ff851b, #ff9d38);
+            border-radius: 20px;
+            padding: 25px;
+            min-height: 320px;
+        }
+
+        .spotlight h2 {
+            margin: 0 0 20px 0;
+            font-size: 28px;
+        }
+
+        .products {
+            display: flex;
+            gap: 15px;
+            background-color: white;
+            padding: 12px;
+            border-radius: 18px;
+        }
+
+        .product {
+            flex: 1;
+            background-color: #f5f5f5;
+            border-radius: 10px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .product img {
+            width: 100%;
+            height: 160px;
+            object-fit: contain;
+        }
+
+        .product h3 {
+            margin: 8px 0;
+            font-size: 17px;
+        }
+
+        .product p {
+            margin: 5px;
+            color: green;
+            font-weight: bold;
+        }
+
+        /* RESPONSIVE */
+        @media(max-width: 900px) {
+
+            .top-header,
+            .search-row {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .categories {
+                overflow-x: auto;
+                justify-content: flex-start;
+                gap: 30px;
+                padding-left: 20px;
+            }
+
+            .banners {
+                flex-direction: column;
+                padding: 20px;
+            }
+
+            .banner {
+                width: 100%;
+            }
+
+            .spotlight {
+                margin: 10px 20px;
+            }
+
+            .products {
+                overflow-x: auto;
+            }
+
+            .product {
+                min-width: 200px;
+            }
+        }
+    </style>
 </head>
-<body background="C:\Users\akhil\OneDrive\Pictures\intersteller.jpg">
-<table border="1" width="100%" cellpadding="10" cellspacing="1">
-<tr bgcolor="red">
-<td colspan="4">
-<table>
-<tr>
 
-<td width="20%>
-<ima src="C:\Users\akhil\OneDrive\Pictures\klulogo.jpg" width="120" height="40"/>
-</td>
+<body>
 
-<td width="60% align="center">
-<input type="text" size="25"  placeholder="type the name"/>
-<input type="button" value="search"/>
-</td>
+    <!-- TOP HEADER -->
+    <div class="top-header">
 
-<td width="20%>
-<font color="sky blue">
-<p>login
-register
-cart(0)</p>
-</table>
-</td>
-</tr>
-</table>
+        <div class="left-buttons">
+
+            <div class="flipkart-btn">
+                <span>f</span>
+                Flipkart
+            </div>
+
+            <div class="travel-btn">
+                <span>✈</span>
+                Travel
+            </div>
+
+        </div>
+
+        <div class="location">
+              Location not set
+            <a href="#">Select delivery location ›</a>
+        </div>
+
+    </div>
+
+
+    <!-- SEARCH ROW -->
+    <div class="search-row">
+
+        <div class="search-box">
+            <span class="search-icon">⌕</span>
+
+            <input type="text"
+                   placeholder="Search for Products, Brands and More">
+        </div>
+
+        <div class="login">
+              &nbsp; Login 
+        </div>
+
+        <div class="more">
+            More 
+        </div>
+
+        <div class="cart">
+              &nbsp; Cart
+        </div>
+
+    </div>
+
+    <hr class="line">
+
+
+    <!-- CATEGORIES -->
+    <div class="categories">
+
+        <div class="category">
+            <div class="category-icon"></div>
+            For You
+        </div>
+
+        <div class="category">
+            <div class="category-icon"></div>
+            Fashion
+        </div>
+
+        <div class="category">
+            <div class="category-icon"></div>
+            Mobiles
+        </div>
+
+        <div class="category">
+            <div class="category-icon"></div>
+            Electronics
+        </div>
+
+        <div class="category">
+            <div class="category-icon"></div>
+            Beauty
+        </div>
+
+        <div class="category">
+            <div class="category-icon"></div>
+            Home
+        </div>
+
+        <div class="category">
+            <div class="category-icon"></div>
+            Appliances
+        </div>
+
+        <div class="category">
+            <div class="category-icon"></div>
+            Toys, Baby
+        </div>
+
+        <div class="category">
+            <div class="category-icon"></div>
+            Food & Health
+        </div>
+
+        <div class="category">
+            <div class="category-icon"></div>
+            Auto Accessories
+        </div>
+
+        <div class="category">
+            <div class="category-icon"></div>
+            Sports & Fitness
+        </div>
+
+        <div class="category">
+            <div class="category-icon"></div>
+            Furniture
+        </div>
+
+        <div class="category">
+            <div class="category-icon"></div>
+            Books
+        </div>
+
+        <div class="category">
+            <div class="category-icon"></div>
+            2 Wheelers
+        </div>
+
+    </div>
+
+
+    <!-- BANNERS -->
+    <div class="banners">
+
+        <!-- BANNER 1 -->
+        <div class="banner banner1">
+
+            <div class="banner-content">
+
+                <div class="sale">
+                    FREEDOM SALE
+                </div>
+
+                <h1>55" Azadi Deals!</h1>
+
+                <p>From ₹2,380/m*</p>
+
+                <p>Upgrade to a bigger screen</p>
+
+            </div>
+
+            <img class="product-image"
+                 src="https://images.unsplash.com/photo-1593784991095-a205069470b6?auto=format&fit=crop&w=600&q=80">
+
+        </div>
+
+
+        <!-- BANNER 2 -->
+        <div class="banner banner2">
+
+            <div class="banner-content">
+
+                <div class="sale">
+                    FREEDOM SALE
+                </div>
+
+                <h1>boat Nirvana Series</h1>
+
+                <p>Up to 85% Off</p>
+
+                <p>Get the best of premium audio</p>
+
+            </div>
+
+            <img class="product-image"
+                 src="https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?auto=format&fit=crop&w=600&q=80">
+
+        </div>
+
+
+        <!-- BANNER 3 -->
+        <div class="banner banner3">
+
+            <div class="banner-content">
+
+                <h1>vivo T5 Lite</h1>
+
+                <p>44W 5G</p>
+
+                <p>6500 mAh | 120 Hz</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- SPOTLIGHT -->
+    <div class="spotlight">
+
+        <h2>Spotlight's on</h2>
+
+        <div class="products">
+
+            <div class="product">
+
+                <img src="https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&w=500&q=80">
+
+                <h3>Drone Camera</h3>
+
+                <p>Special Price</p>
+
+            </div>
+
+
+            <div class="product">
+
+                <img src="https://images.unsplash.com/photo-1603487742131-4160ec999306?auto=format&fit=crop&w=500&q=80">
+
+                <h3>Fashion Sandals</h3>
+
+                <p>Min. 50% Off</p>
+
+            </div>
+
+
+            <div class="product">
+
+                <img src="https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=500&q=80">
+
+                <h3>Water Bottles</h3>
+
+                <p>From ₹299</p>
+
+            </div>
+
+
+            <div class="product">
+
+                <img src="https://images.unsplash.com/photo-1562273138-f46be4ebdf33?auto=format&fit=crop&w=500&q=80">
+
+                <h3>Women's Sandals</h3>
+
+                <p>Min. 40% Off</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
 </body>
 </html>

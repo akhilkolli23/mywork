@@ -1,0 +1,66 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Interactive Counter</title>
+  <style>
+    body {
+      text-align: center;
+      margin-top: 50px;
+      background-color: white;
+    }
+    h1 {
+      color: blue;
+    }
+    #counter {
+      font-size: 48px;
+      margin: 20px 0;
+      color: black;
+    }
+    button {
+      font-size: 18px;
+      padding: 10px 20px;
+      margin: 5px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      opacity: 0.8;
+    }
+    .decrement {
+      background-color: red;
+      color: white;
+    }
+    .reset {
+      background-color: silver;
+      color: white;
+    }
+    .increment {
+      background-color: green;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <h1>Interactive Counter</h1>
+  <div id="counter">0</div>
+  <button class="decrement" onclick="changeCount(-1)">-1</button>
+  <button class="reset" onclick="resetCount()">Reset</button>
+  <button class="increment" onclick="changeCount(1)">+1</button>
+
+  <script>
+    let count = 0;
+    const counterElement = document.getElementById('counter');
+
+    function changeCount(value) {
+      count += value;
+      counterElement.textContent = count;
+    }
+
+    function resetCount() {
+      count = 0;
+      counterElement.textContent = count;
+    }
+  </script>
+</body>
+</html>
